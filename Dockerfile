@@ -7,9 +7,6 @@ COPY mvnw pom.xml ./
 copy src/ ./src
 RUN ./mvnw dependency:go-offline
 
-FROM base as test
-CMD ["./mvnw", "test"]
-
 FROM base as build
 RUN ./mvnw package
 
