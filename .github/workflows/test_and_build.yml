@@ -10,5 +10,4 @@ jobs:
         uses: actions/checkout@v2
       - name: Build Docker images
         run: |
-          docker build -t gaggle-base --target base .
           docker build -t gaggle .
