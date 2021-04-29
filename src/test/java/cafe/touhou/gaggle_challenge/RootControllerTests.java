@@ -46,7 +46,9 @@ class RootControllerTests {
 			the object from the RootController. Unlikely as it is, allow the
 			received message timestamp to be up to one second ahead.
 		*/
-		Assertions.assertThat(received - expected).isLessThanOrEqualTo(1);
+		Assertions.assertThat(received - expected)
+			.isLessThanOrEqualTo(1)
+			.isGreaterThan(-1);
 	}
 
 }
