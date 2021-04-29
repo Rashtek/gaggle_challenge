@@ -8,8 +8,6 @@ RUN ./mvnw -q dependency:go-offline
 
 FROM base as build
 
-COPY mvnw pom.xml ./
-RUN ./mvnw -q dependency:go-offline
 COPY src/ ./src
 RUN ./mvnw -q package
 
