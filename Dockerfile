@@ -4,14 +4,14 @@ WORKDIR /app
 
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
+RUN ./mvnw -q dependency:go-offline
 
 FROM base as build
 
 COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
+RUN ./mvnw -q dependency:go-offline
 COPY src/ ./src
-RUN ./mvnw package
+RUN ./mvnw -q package
 
 FROM openjdk:11-jre-slim as prod
 EXPOSE 8080
