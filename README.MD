@@ -8,7 +8,7 @@ The timestamp field is formatted according to ISO-8601, in particular [Java's IS
 - Docker (Optional)
 
 ## Testing and Building
-Run `./mvnw package` (on Linux) or `.\mvnw.cmd` (on Windows) to run unit tests and produce a .jar file in the `target/` directory.
+Run `./mvnw package` (on Linux) or `.\mvnw.cmd package` (on Windows) to run unit tests and produce a .jar file in the `target/` directory.
 
 Alternatively, run `./build.sh` (on Linux) to create a Docker image with port 8080 exposed. During the image build process, unit tests are run, and the build will fail if a unit test fails. The tag used for the image is `gaggle`.
 
