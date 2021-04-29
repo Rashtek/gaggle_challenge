@@ -8,7 +8,7 @@ public class Message {
 	public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 	private final String MESSAGE = "Welcome to the machine.";
 
-	private String timestamp;
+	private final String timestamp;
 
 	public Message() {
 		timestamp = OffsetDateTime.now()
