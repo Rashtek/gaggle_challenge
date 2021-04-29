@@ -1,0 +1,12 @@
+name: Test and Build
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Run build.sh
+        run: build.sh
