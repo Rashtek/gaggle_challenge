@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.OffsetDateTime;
 
@@ -30,12 +32,13 @@ class RootControllerTests {
 			.getResponse()
 			.getContentAsString();
 
-		Message recvd_msg = objMapper.readValue(res, Message.class);
+		// Message is immutable, so make a JsonNode instead
+		JsonNode recvd_msg = objMapper.readTree(res);
 
-		Assertions.assertThat(recvd_msg.getMessage())
+		Assertions.assertThat(recvd_msg.get("message").asText())
 			.isEqualTo(msg.getMessage());
 		
-		long received = OffsetDateTime.parse(recvd_msg.getTimestamp(), Message.FORMATTER).toEpochSecond();
+		long received = OffsetDateTime.parse(recvd_msg.get("timestamp").asText(), Message.FORMATTER).toEpochSecond();
 		long expected = OffsetDateTime.parse(msg.getTimestamp(), Message.FORMATTER).toEpochSecond();
 
 		/*
